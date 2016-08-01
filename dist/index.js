@@ -28,8 +28,6 @@ var defaultOptions = {
   unpackers: []
 };
 
-console.log(_spacebroClient2.default);
-
 // Variables
 var options = {};
 var connected = false;
@@ -78,8 +76,9 @@ function connect(opt) {
   _spacebroClient2.default.registerToMaster([{
     name: options.channel,
     trigger: function trigger(data) {
+      // console.log('received', data)
       if (data.from === options.computer) return;
-      if (data.to && data.to !== options.computer) return;
+      if (data.to != null && data.to !== options.computer) return;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -91,11 +90,6 @@ function connect(opt) {
           var unpacked = unpack(data);
           if (unpacked === false) return;
           data = unpacked || data;
-          if (_lodash2.default.has(events, data.eventName)) {
-            var _events$data$eventNam;
-
-            (_events$data$eventNam = events[data.eventName]).dispatch.apply(_events$data$eventNam, _toConsumableArray(data.args));
-          }
         }
       } catch (err) {
         _didIteratorError = true;
@@ -110,6 +104,12 @@ function connect(opt) {
             throw _iteratorError;
           }
         }
+      }
+
+      if (_lodash2.default.has(events, data.eventName)) {
+        var _events$data$eventNam;
+
+        (_events$data$eventNam = events[data.eventName]).dispatch.apply(_events$data$eventNam, _toConsumableArray(data.args));
       }
     }
   }], options.computer);

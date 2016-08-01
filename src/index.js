@@ -38,7 +38,6 @@ function touch (eventName) {
 
 // Initialization
 function connect (opt) {
-  console.log(opt)
   options = _.merge({}, defaultOptions, opt)
   if (!options.computer) {
     console.error('Starport - You must set a computer name!')
@@ -52,15 +51,16 @@ function connect (opt) {
   spacebroClient.registerToMaster([{
     name: options.channel,
     trigger: function (data) {
+      // console.log('received', data)
       if (data.from === options.computer) return
-      if (data.to && data.to !== options.computer) return
+      if (data.to != null && data.to !== options.computer) return
       for (let unpack of filterHooks(data.eventName, unpackers)) {
         let unpacked = unpack(data)
         if (unpacked === false) return
         data = unpacked || data
-        if (_.has(events, data.eventName)) {
-          events[data.eventName].dispatch(...data.args)
-        }
+      }
+      if (_.has(events, data.eventName)) {
+        events[data.eventName].dispatch(...data.args)
       }
     }
   }], options.computer)
@@ -90,12 +90,10 @@ function addUnpacker (handler, priority, eventName) { addHook(unpackers, eventNa
 
 // Emission
 function emit (eventName, ...args) {
-  console.log('emit', eventName)
   sendTo(eventName, null, ...args)
 }
 
 function sendTo (eventName, to, ...args) {
-  console.log('sendTo', eventName)
   if (!connected) return console.warn('Starport - You\'re not connected.')
   let data = {
     to, eventName, args,
@@ -104,7 +102,6 @@ function sendTo (eventName, to, ...args) {
   for (let pack of filterHooks(eventName, packers)) {
     data = pack(data, eventName) || data
   }
-  console.log(data)
   spacebroClient.emit(options.channel, data)
 }
 
