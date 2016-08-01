@@ -10,8 +10,6 @@ const defaultOptions = {
   unpackers: []
 }
 
-console.log(spacebroClient)
-
 // Variables
 let options = {}
 let connected = false
@@ -40,6 +38,7 @@ function touch (eventName) {
 
 // Initialization
 function connect (opt) {
+  console.log(opt)
   options = _.merge({}, defaultOptions, opt)
   if (!options.computer) {
     console.error('Starport - You must set a computer name!')
@@ -91,10 +90,12 @@ function addUnpacker (handler, priority, eventName) { addHook(unpackers, eventNa
 
 // Emission
 function emit (eventName, ...args) {
+  console.log('emit', eventName)
   sendTo(eventName, null, ...args)
 }
 
 function sendTo (eventName, to, ...args) {
+  console.log('sendTo', eventName)
   if (!connected) return console.warn('Starport - You\'re not connected.')
   let data = {
     to, eventName, args,
@@ -103,6 +104,7 @@ function sendTo (eventName, to, ...args) {
   for (let pack of filterHooks(eventName, packers)) {
     data = pack(data, eventName) || data
   }
+  console.log(data)
   spacebroClient.emit(options.channel, data)
 }
 

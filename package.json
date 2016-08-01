@@ -1,6 +1,6 @@
 {
   "name": "starport-dude",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An extended spaceBro client",
   "main": "dist/index.js",
   "scripts": {
