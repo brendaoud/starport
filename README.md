@@ -13,7 +13,7 @@ An extended [spaceBro](https://github.com/soixantecircuits/spacebro) client
 ```
 import starPort from 'starport'
 
-starport.connect({
+starPort.connect({
   server: {
     'address': 'localhost',
     'port': 8888
@@ -22,8 +22,8 @@ starport.connect({
   channel: 'starport'
 })
 
-starport.on('pong', () => console.log('pong'))
-starport.emit('ping')
+starPort.on('pong', () => console.log('pong'))
+starPort.emit('ping')
 ```
 
 ## Basic API
@@ -66,4 +66,5 @@ Unpackers are call when you receive a message from spaceBro, before any handler 
 
 ## Contribute
 You can modify the source in `src/index.js`. Run `npm run build` to transpile and test.
+
 Please follow [standard style](https://github.com/feross/standard) conventions.
