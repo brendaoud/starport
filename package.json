@@ -1,0 +1,35 @@
+{
+  "name": "starport-dude",
+  "version": "1.0.0",
+  "description": "An extended spaceBro client",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "standard",
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendaoud/starportdude.git"
+  },
+  "author": "Brendan <brendan@soixantecircuits.fr>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brendaoud/starportdude/issues"
+  },
+  "homepage": "https://github.com/brendaoud/starportdude#readme",
+  "devDependencies": {
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.3.13",
+    "standard": "^7.1.2"
+  },
+  "dependencies": {
+    "lodash": "^4.14.1",
+    "signals": "^1.0.0",
+    "spacebro-client": "0.0.11"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
