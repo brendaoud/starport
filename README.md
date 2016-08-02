@@ -1,13 +1,16 @@
 # StarPort
-An extended [spaceBro](https://github.com/soixantecircuits/spacebro) client
+An extended [spaceBro](https://github.com/soixantecircuits/spacebro) client.
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![node](https://img.shields.io/badge/node-5.3.x-brightgreen.svg)](https://nodejs.org/en/)
 
 ## Why use starPort ?
 1. It uses channels, and prevent conflicts.
 2. You can send events to specific part of the network, to prevent conflicts.
-3. You can trace easily, who sent an event and to whom.
-4. It has hooks for you to use.
+3. Events sent by an app, are not resent to that app, to prevent conflicts.
+4. It is all about quality communication and preventing conflicts.
+5. You can trace easily who sent an event and to whom.
+6. You can pass as many arguments with events as you wish.
+7. It has hooks for you to use, when sending and receiving events.
 
 ## Basic Usage
 ```
