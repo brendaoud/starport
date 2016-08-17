@@ -12,6 +12,11 @@ An extended [spaceBro](https://github.com/soixantecircuits/spacebro) client.
 6. You can pass as many arguments with events as you wish.
 7. It has hooks for you to use, when sending and receiving events.
 
+## Installation
+```bash
+npm i -S starport
+```
+
 ## Basic Usage
 ```
 import starPort from 'starport'
