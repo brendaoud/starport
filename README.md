@@ -18,7 +18,7 @@ npm i -S starport
 ```
 
 ## Basic Usage
-```
+```js
 import starPort from 'starport'
 
 starPort.connect({
