@@ -18,6 +18,13 @@ npm i -S starport
 ```
 
 ## Basic Usage
+
+First, you need to start a [spaceBro server](https://github.com/soixantecircuits/spacebro). To run one locally, run the following line in your terminal (mind that you need to have spaceBro installed):
+```bash
+spacebro
+```
+
+Then, it's time to write some code:
 ```js
 import starPort from 'starport'
 
